@@ -147,9 +147,7 @@ const Header = () => {
                 }
                 alt="logo"
               />
-              <p className="hidden text-xs sm:inline-flex md:text-sm">
-                {session ? session?.user!.name : "Hello Stranger"}
-              </p>
+              <p>{session ? session?.user!.name : "Hello Stranger"}</p>
             </div>
             <div>
               {session ? (
