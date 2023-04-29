@@ -11,7 +11,7 @@ interface Props {
 
 export const Post = ({ post, categories }: Props) => {
   return (
-    <div className="bg-secondaryColor shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8 ">
+    <div className="bg-secondaryColor shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-6">
       <div className="relative overflow-hidden shadow-md pb-96 mb-6">
         <Image
           src={urlFor(post.mainImage).url()}

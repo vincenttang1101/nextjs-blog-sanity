@@ -19,9 +19,6 @@ module.exports = {
         globalBgColor: "#333333", // dark gray
         mainBgColor: "#EDF2F7", // light gray
       },
-      boxShadow: {
-        btnShadow: "0px 0px 18px 3px rgba(52,73,94,1)",
-      },
     },
   },
   plugins: [],

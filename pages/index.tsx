@@ -103,7 +103,7 @@ export default function Home({ posts, categories }: Props) {
       <main className="font-bodyFont bg-mainBgColor">
         {/* <categories> */}
         <div
-          className={`${styles["categories-list"]} flex gap-5 justify-center flex-wrap pt-4`}
+          className={`${styles["categories-list"]} flex gap-5 justify-center flex-wrap pt-10`}
         >
           {categories.map((category) => (
             <Category key={category._id} category={category} />
@@ -123,9 +123,9 @@ export default function Home({ posts, categories }: Props) {
               hasMore={hasMorePosts}
               loader={<Loader />}
               endMessage={
-                <span className="text-center font-bold">
+                <p className="text-center text-3xl pb-4 font-bold">
                   Yay! You have seen it all
-                </span>
+                </p>
               }
             >
               {listOfPosts.map((post) => (
@@ -140,6 +140,7 @@ export default function Home({ posts, categories }: Props) {
             className={`${styles["recent-posts"]} w-1/3 h-full bg-white shadow-lg rounded-lg p-8 pb-12 mb-8 flex flex-col`}
           >
             <p className="font-bold pb-5">Recent Posts</p>
+            <hr className="border-b-2" />
             {listOfPosts.slice(0, 3).map((post) => (
               <div key={post._id} className="flex items-center gap-5 py-4">
                 <Image
@@ -150,13 +151,13 @@ export default function Home({ posts, categories }: Props) {
                   height={10}
                 />
                 <div className="flex flex-col">
-                  <span className="font-light">
+                  <p className="font-light">
                     {moment(post.publishedAt).format("DD/MM/YYYY")}
-                  </span>
+                  </p>
                   <Link href={`/post/${post.slug.current}`}>
-                    <span className="transition duration-700 cursor-pointer hover:text-hoverTextColor font-medium">
+                    <p className="transition duration-700 cursor-pointer hover:text-hoverTextColor font-medium">
                       {post.title}
-                    </span>
+                    </p>
                   </Link>
                 </div>
               </div>

@@ -10,16 +10,16 @@ interface Props {
 
 const contact = ({ contact }: Props) => {
   return (
-    <div className="py-5">
+    <div className="py-5 bg-mainBgColor">
       {contact.map((data: ContactType) => (
         <div
           key={data._id}
-          className="max-w-7xl mx-auto flex flex-col items-center gap-5"
+          className="max-w-4xl mx-auto flex flex-col items-center gap-5 bg-secondaryColor rounded-md"
         >
-          <div className="font-titleFont font-bold text-5xl border-b-[2px] border-b-cyan-800">
+          <div className="font-titleFont font-bold text-5xl border-b-[3px] border-primaryColor pt-10">
             {data.title}
           </div>
-          <div className="w-3/5">
+          <div className="w-3/5 pb-10">
             <PortableText
               content={data.body}
               projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}

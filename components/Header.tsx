@@ -87,7 +87,7 @@ const Header = () => {
               Contact
             </Link>
           </div>
-          <div className="flex items-center gap-8 text-lg">
+          <div className="flex items-center gap-8">
             <div className="flex items-center gap-1">
               <img
                 className="w-8 h-8 rounded-full"
@@ -98,9 +98,7 @@ const Header = () => {
                 }
                 alt="logo"
               />
-              <p className="hidden text-xs sm:inline-flex md:text-sm">
-                {session ? session?.user!.name : "Hello Stranger"}
-              </p>
+              <p>{session ? session?.user!.name : "Hello Stranger"}</p>
             </div>
             {session ? (
               <button
@@ -112,7 +110,7 @@ const Header = () => {
             ) : (
               <button
                 onClick={() => signIn()}
-                className="text-sm border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 rounded-md hover:bg-highlightColor transition-all duration-700"
+                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 rounded-md hover:bg-highlightColor transition-all duration-700"
               >
                 Sign In
               </button>

@@ -83,21 +83,18 @@ const Post = ({ post }: Props) => {
 
   return (
     <div className="bg-mainBgColor">
-      <div className="max-w-4xl mx-auto bg-secondaryColor">
+      <div className="max-w-4xl mx-auto my-4 bg-secondaryColor">
         {/* <image> */}
-        <div className="relative">
-          <img
-            src={urlFor(post.mainImage).url()}
-            className="object-cover w-full h-50"
-            alt="banner"
-          />
-          <div className="absolute inset-x-0 top-0 h-5 bg-mainBgColor" />
-        </div>
+        <img
+          src={urlFor(post.mainImage).url()}
+          className="object-cover w-full h-50"
+          alt="banner"
+        />
         {/* <image /> */}
 
         {/* <article> */}
         <article className="px-6">
-          <h1 className="font-titleFont font-bold text-[35px] border-b-[2px] border-b-cyan-800 mt-10 mb-3">
+          <h1 className="font-titleFont font-bold text-[35px] border-b-[2px] border-primaryColor mt-10 mb-3">
             {post.title}
           </h1>
           <h2 className="font-bodyFont text-[18px] text-gray-500 mb-2">
@@ -154,12 +151,11 @@ const Post = ({ post }: Props) => {
           </div>
         </article>
         {/* <article> */}
-
         {/* <comment> */}
-        <div className="pt-4 mx-5">
-          <span className="text-xs font-bold uppercase font-titleFont">
+        <div className="py-10 mx-5">
+          <p className="text-xs font-bold uppercase font-titleFont">
             Enjoyed this article?
-          </span>
+          </p>
           <h3 className="text-3xl font-bold font-titleFont">
             Leave a Comment below!
           </h3>
@@ -172,12 +168,10 @@ const Post = ({ post }: Props) => {
           />
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className="flex flex-col">
-              <span className="text-base font-semibold font-titleFont">
-                Name
-              </span>
+              <p className="text-base font-semibold font-titleFont">Name</p>
               <input
                 {...register("name", { required: true })}
-                className="text-base placeholder:text-sm border-b-[1px] py-1 px-4 outline-none focus-within:shadow-xl"
+                className="text-base placeholder:text-sm border-b-[3px] py-1 px-4 outline-none focus-within:shadow-xl"
                 type="text"
                 placeholder="Enter your Name"
               />
@@ -189,12 +183,10 @@ const Post = ({ post }: Props) => {
               )}
             </label>
             <label className="flex flex-col">
-              <span className="text-base font-semibold font-titleFont">
-                Email
-              </span>
+              <p className="text-base font-semibold font-titleFont">Email</p>
               <input
                 {...register("email", { required: true })}
-                className="text-base placeholder:text-sm border-b-[1px] py-1 px-4 outline-none focus-within:shadow-xl"
+                className="text-base placeholder:text-sm border-b-[3px] py-1 px-4 outline-none focus-within:shadow-xl"
                 type="text"
                 placeholder="Enter your Email"
               />
@@ -206,12 +198,10 @@ const Post = ({ post }: Props) => {
               )}
             </label>
             <label className="flex flex-col">
-              <span className="text-base font-semibold font-titleFont">
-                Comment
-              </span>
+              <p className="text-base font-semibold font-titleFont">Comment</p>
               <textarea
                 {...register("comment", { required: true })}
-                className="text-base placeholder:text-sm border-b-[1px] border-secondaryColor py-1 px-4 outline-none focus-within:shadow-xl"
+                className="text-base placeholder:text-sm border-b-[3px] border-secondaryColor py-2 px-4 outline-none focus-within:shadow-xl"
                 placeholder="Enter your Comments"
                 rows={6}
               />
@@ -235,7 +225,7 @@ const Post = ({ post }: Props) => {
           {!session && (
             <button
               onClick={handleUserErr}
-              className="w-full py-2 text-base font-semibold tracking-wider text-secondaryColor uppercase rounded-lg font-titleFont transition duration-500 ease transform hover:translate-y-1 bg-highlightColor"
+              className="w-full py-2 mt-3 text-base font-semibold tracking-wider text-secondaryColor uppercase rounded-lg font-titleFont transition duration-500 ease transform hover:translate-y-1 bg-highlightColor"
               type="submit"
             >
               Submit
@@ -250,7 +240,7 @@ const Post = ({ post }: Props) => {
               {userErr}
             </p>
           )}
-          <div className="flex flex-col w-full p-10 mx-auto my-5 space-y-2 shadow-lg shadow-gray-500">
+          <div className="flex flex-col w-full mt-8 p-10 mx-auto space-y-2 shadow-lg shadow-gray-500">
             <h3 className="text-3xl font-semibold font-titleFont">Comments</h3>
             <hr className="h-px my-5 bg-secondaryColor border-0 dark:bg-primaryColor" />{" "}
             {loading ? (
@@ -258,9 +248,9 @@ const Post = ({ post }: Props) => {
             ) : (
               listOfComments.map((comment: any) => (
                 <div key={comment._id}>
-                  <span className="text-gray-700 font-semibold">
+                  <p className="text-gray-700 font-semibold">
                     {moment(comment._createdAt).format("DD/MM/YYYY, h:mm:ss a")}
-                  </span>
+                  </p>
                   <p>
                     <span className="text-highlightColor font-bold pr-5">
                       {comment.email}
