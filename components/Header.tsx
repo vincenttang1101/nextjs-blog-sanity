@@ -103,7 +103,7 @@ const Header = () => {
             {session ? (
               <button
                 onClick={() => signOut()}
-                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-300"
+                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-700"
               >
                 Sign Out
               </button>
@@ -153,7 +153,7 @@ const Header = () => {
               {session ? (
                 <button
                   onClick={() => signOut()}
-                  className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-300"
+                  className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-700"
                 >
                   Sign Out
                 </button>
