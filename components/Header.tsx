@@ -103,14 +103,14 @@ const Header = () => {
             {session ? (
               <button
                 onClick={() => signOut()}
-                className="text-sm border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 rounded-md hover:bg-highlightColor transition-all duration-300"
+                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-300"
               >
                 Sign Out
               </button>
             ) : (
               <button
                 onClick={() => signIn()}
-                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 rounded-md hover:bg-highlightColor transition-all duration-700"
+                className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-700"
               >
                 Sign In
               </button>
@@ -123,7 +123,7 @@ const Header = () => {
 
       {/* <navbar for max-width: 768px>*/}
       {isOpen && (
-        <div className={`${styles["navbar-hidden"]} flex flex-col gap-2`}>
+        <div className="flex flex-col gap-3 pt-2 px-2">
           <Link
             className="transition duration-700 hover:text-highlightColor"
             href="/"
@@ -153,14 +153,14 @@ const Header = () => {
               {session ? (
                 <button
                   onClick={() => signOut()}
-                  className="text-sm border-[1px] border-headerTextColor hover:border-secondaryColor px-4 py-1 rounded-md hover:bg-highlightColor transition-all duration-300"
+                  className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-300"
                 >
                   Sign Out
                 </button>
               ) : (
                 <button
                   onClick={() => signIn()}
-                  className="text-sm border-[1px] border-headerTextColor hover:border-buttonColor px-4 py-1 hover:text-white rounded-md hover:bg-buttonColor transition-all duration-700"
+                  className="border-[1px] border-secondaryColor hover:border-buttonColor px-4 py-1 text-base rounded-md hover:bg-highlightColor transition-all duration-700"
                 >
                   Sign In
                 </button>
