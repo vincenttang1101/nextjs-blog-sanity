@@ -19,6 +19,7 @@ export const Post = ({ post, categories }: Props) => {
           height={0}
           alt="banner"
           className="object-top absolute h-full w-full object-cover shadow-lg rounded-lg"
+          priority={true}
         />
       </div>
       <Link href={`/post/${post.slug.current}`}>
@@ -36,7 +37,7 @@ export const Post = ({ post, categories }: Props) => {
                   (post.categories[0] as CategoryType)._id)
             )
             .map((category) => (
-              <div>{category.title}</div>
+              <div key={category._id}>{category.title}</div>
             ))}
         </h1>
         <p>{moment(post.publishedAt).format("DD/MM/YYYY")}</p>

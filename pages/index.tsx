@@ -148,7 +148,7 @@ export default function Home({ posts, categories }: Props) {
                   src={urlFor(post.author.image).url()}
                   alt="avatar"
                   width={380}
-                  height={10}
+                  height={0}
                 />
                 <div className="flex flex-col">
                   <p className="font-light">

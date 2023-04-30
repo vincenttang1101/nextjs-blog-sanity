@@ -8,7 +8,6 @@ import { signIn, useSession } from "next-auth/react";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { Loader } from "../../components/Loader";
-import Image from "next/image";
 
 interface Props {
   post: PostType;
