@@ -140,7 +140,7 @@ export default function Home({ posts, categories }: Props) {
             className={`${styles["recent-posts"]} w-1/3 h-full bg-white shadow-lg rounded-lg p-8 pb-12 mb-8 flex flex-col`}
           >
             <p className="font-bold pb-5">Recent Posts</p>
-            <hr className="border-b-2" />
+            <hr className="border-b-1 border-primaryColor" />
             {listOfPosts.slice(0, 3).map((post) => (
               <div key={post._id} className="flex items-center gap-5 py-4">
                 <Image

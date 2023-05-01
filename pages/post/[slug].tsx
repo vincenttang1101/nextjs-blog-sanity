@@ -1,5 +1,5 @@
 import PortableText from "react-portable-text";
-import { GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import React, { useEffect, useState } from "react";
 import { sanityClient, urlFor } from "../../sanity";
 import { PostType } from "../../typing";
@@ -268,6 +268,27 @@ const Post = ({ post }: Props) => {
 
 export default Post;
 
+export const getStaticPaths: GetStaticPaths = async () => {
+  const query = `
+  *[_type == "post"]{
+    _id,
+    slug {
+      current,
+    },
+  }`;
+
+  const posts = await sanityClient.fetch(query);
+  const paths = posts.map((post: PostType) => ({
+    params: {
+      slug: post.slug.current,
+    },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const query = `
@@ -300,27 +321,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       post,
     },
-    revalidate: 5,
-  };
-};
-
-export const getStaticPaths = async () => {
-  const query = `
-  *[_type == "post"]{
-    _id,
-    slug {
-      current,
-    },
-  }`;
-
-  const posts = await sanityClient.fetch(query);
-  const paths = posts.map((post: PostType) => ({
-    params: {
-      slug: post.slug.current,
-    },
-  }));
-  return {
-    paths,
-    fallback: false,
+    revalidate: 30,
   };
 };
