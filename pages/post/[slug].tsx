@@ -80,9 +80,17 @@ const Post = ({ post }: Props) => {
     }
   }, [loading]);
 
+  if (router.isFallback) {
+    return (
+      <div className="text-center h-full">
+        <Loader />;
+      </div>
+    );
+  }
+
   return (
-    <div className="bg-mainBgColor">
-      <div className="max-w-4xl mx-auto my-4 bg-secondaryColor">
+    <div className="bg-mainBgColor py-5">
+      <div className="max-w-4xl mx-auto bg-secondaryColor">
         {/* <image> */}
         <img
           src={urlFor(post.mainImage).url()}
@@ -150,6 +158,7 @@ const Post = ({ post }: Props) => {
           </div>
         </article>
         {/* <article> */}
+
         {/* <comment> */}
         <div className="py-10 mx-5">
           <p className="text-xs font-bold uppercase font-titleFont">
@@ -283,9 +292,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
       slug: post.slug.current,
     },
   }));
+
   return {
     paths,
-    fallback: false,
+    fallback: "blocking",
   };
 };
 

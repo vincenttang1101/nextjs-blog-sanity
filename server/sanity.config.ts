@@ -7,8 +7,8 @@ export default defineConfig({
   name: 'default',
   title: 'tech-blog',
 
-  projectId: process.env.SANITY_STUDIO_API_PROJECT_ID!,
-  dataset: process.env.SANITY_STUDIO_API_DATASET!,
+  projectId: 'ldq6wmsi',
+  dataset: 'production',
 
   plugins: [deskTool(), visionTool()],
 

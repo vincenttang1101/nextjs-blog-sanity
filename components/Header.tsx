@@ -30,7 +30,7 @@ const Header = () => {
         <div
           className={`${styles["wrapper-description"]} flex flex-col items-center`}
         >
-          <div className="flex items-center gap-4 pb-5">
+          <div className="flex flex-col pb-2">
             <div>
               <Link href="/">
                 <Image
@@ -39,7 +39,7 @@ const Header = () => {
                   alt="logo"
                 />
               </Link>
-              <span>Tech Blog</span>
+              <p>Tech Blog</p>
             </div>
           </div>
           <button
@@ -60,7 +60,7 @@ const Header = () => {
             Menu
           </button>
           <p
-            className={`${styles["blog-description"]} text-center max-w-2xl pb-5`}
+            className={`${styles["blog-description"]} text-center max-w-3xl pb-2`}
           >
             Discover the latest in technology on my blog, where I share insights
             and advice on gadgets, software, and trends. Join me on this journey
@@ -88,15 +88,17 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex items-center gap-8">
-            <div className="flex items-center gap-1">
-              <img
-                className="w-8 h-8 rounded-full"
+            <div className="flex items-center gap-3">
+              <Image
                 src={
                   session
                     ? session?.user!.image!
-                    : "https://www.noormohammad.live/static/media/roundedProfile.477a194221d255c8ce26.png"
+                    : "https://i.ibb.co/R718FDz/stranger-logo.jpg"
                 }
+                width={200}
+                height={0}
                 alt="logo"
+                className="w-11 h-11 rounded-full"
               />
               <p>{session ? session?.user!.name : "Hello Stranger"}</p>
             </div>
@@ -137,13 +139,13 @@ const Header = () => {
             Contact
           </Link>
           <div className="flex justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <img
-                className="w-8 h-8 rounded-full"
+                className="w-11 h-11 rounded-full"
                 src={
                   session
                     ? session?.user!.image!
-                    : "https://www.noormohammad.live/static/media/roundedProfile.477a194221d255c8ce26.png"
+                    : "https://i.ibb.co/R718FDz/stranger-logo.jpg"
                 }
                 alt="logo"
               />

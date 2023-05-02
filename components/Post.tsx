@@ -3,6 +3,7 @@ import { urlFor } from "../sanity";
 import Link from "next/link";
 import moment from "moment";
 import { CategoryType, PostType } from "../typing";
+import { useRouter } from "next/router";
 
 interface Props {
   post: PostType;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 export const Post = ({ post, categories }: Props) => {
+  const router = useRouter();
+
   return (
     <div className="bg-secondaryColor shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-6">
       <div className="relative overflow-hidden shadow-md pb-96 mb-6">
@@ -57,17 +60,16 @@ export const Post = ({ post, categories }: Props) => {
       <p className="text-center text-lg text-gray-600 font-normal px-4 lg:px-20 mb-8">
         {post.description.substring(0, 150)} ...
       </p>
-      <Link
-        className="w-100 mt-5"
-        key={post._id}
-        href={`/post/${post.slug.current}`}
-      >
+      <div className="w-100 mt-5">
         <div className="text-center">
-          <button className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-highlightColor text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">
+          <button
+            className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-highlightColor text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
+            onClick={() => router.push(`/post/${post.slug.current}`)}
+          >
             Continue Reading
           </button>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };
