@@ -1,27 +1,53 @@
-# Next.js + Tailwind CSS Example
+### [Live demo](https://techblog-orignal.vercel.app/)
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanity-io%2Fsanity-template-nextjs-blog-comments&project-name=sanity-next-blog-comments&repository-name=sanity-next-blog-comments&demo-title=Next.js%20Blog%20with%20Comments&demo-description=A%20Next.js%20%2B%20Sanity%20blog%20with%20comments%20stored%20in%20Studio%20via%20API%20routes.&demo-url=https%3A%2F%2Ftemplate-nextjs-blog-comments.sanity.build%2F&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fsanity-io%2Fsanity-template-nextjs-blog-comments%2Fmain%2F.sanity-template%2Fassets%2Fpreview-image.jpg&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx)
 
-## Deploy your own
+![screenshot](ihttps://i.ibb.co/19XcZHD/tech-blog.png)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This is a demo of how to add a simple comment section to blog post using [Next.js](https://nextjs.org), [Sanity.io](https://www.sanity.io), and [Vercel](https://vercel.com).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+### Running the front-end
 
-## How to use
+You'll need to create a `.env` file to store a few environment variables that Next will use to pull data from the Sanity API.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+```dotenv
+# For Next Locally
+NEXT_PUBLIC_SANITY_PROJECT_ID
+NEXT_PUBLIC_SANITY_DATASET
+NEXT_PUBLIC_SANITY_API_VERSION
+SANITY_API_TOKEN
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET
+GITHUB_ID
+GITHUB_SECRET
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
+# For Studio Locally
+SANITY_STUDIO_API_PROJECT_ID=
+SANITY_STUDIO_API_DATASET=
 ```
 
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+To find these, visit https://manage.sanity.io
+
+The Project ID is displayed once you select your project. It is an alphanumeric 8-character string.
+
+You can find or create your Sanity API token by choosing "Settings" and then "API". It is a 180-character string.
+
+The dataset is the name of the dataset that you want to use. For instance "production".
+
+Once those env variables are in place, you can run the following commands to get Next's development server up and running:
 
 ```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+# install packages for frontend
+npm install
+# install packages for backend
+cd server
+npm install
+
+# Run the frontend
+npm run dev
+# Run the backend
+cd server
+npm run dev || sanity dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+The blog will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`.

@@ -46,7 +46,7 @@ export default function Home({ posts, categories }: Props) {
     const newPosts = await sanityClient.fetch(query);
     if (newPosts.length === 0) {
       setHasMorePosts(false);
-    }
+    } 
     setCurrentPost((prevCurrentPost) => prevCurrentPost + 2);
     setListOfPosts((prevPosts): any => [...prevPosts, ...newPosts]);
   };
