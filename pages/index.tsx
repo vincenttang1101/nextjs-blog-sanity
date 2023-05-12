@@ -38,7 +38,7 @@ export default function Home({ posts, categories }: Props) {
         title,
       },
       description,
-      mainImage,
+      "mainImage": mainImage.asset->url,
       slug,
       publishedAt,
     }`;
@@ -46,7 +46,7 @@ export default function Home({ posts, categories }: Props) {
     const newPosts = await sanityClient.fetch(query);
     if (newPosts.length === 0) {
       setHasMorePosts(false);
-    } 
+    }
     setCurrentPost((prevCurrentPost) => prevCurrentPost + 2);
     setListOfPosts((prevPosts): any => [...prevPosts, ...newPosts]);
   };
@@ -145,7 +145,7 @@ export default function Home({ posts, categories }: Props) {
               <div key={post._id} className="flex items-center gap-5 py-4">
                 <Image
                   className="object-cover w-12 h-12 rounded-full"
-                  src={urlFor(post.author.image).url()}
+                  src={post?.author?.image}
                   alt="avatar"
                   width={380}
                   height={0}
@@ -154,7 +154,7 @@ export default function Home({ posts, categories }: Props) {
                   <p className="font-light">
                     {moment(post.publishedAt).format("DD/MM/YYYY")}
                   </p>
-                  <Link href={`/post/${post.slug.current}`}>
+                  <Link href={`/post/${post?.slug?.current}`}>
                     <p className="transition duration-700 cursor-pointer hover:text-hoverTextColor font-medium">
                       {post.title}
                     </p>
@@ -187,7 +187,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
       title,
     },
     description,
-    mainImage,
+    "mainImage": mainImage.asset->url,
     slug,
     publishedAt,
   }`;

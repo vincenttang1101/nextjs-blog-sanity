@@ -93,7 +93,7 @@ const Post = ({ post }: Props) => {
       <div className="max-w-4xl mx-auto bg-secondaryColor">
         {/* <image> */}
         <img
-          src={urlFor(post.mainImage).url()}
+          src={post?.mainImage?.toString()}
           className="object-cover w-full h-50"
           alt="banner"
         />
@@ -102,59 +102,61 @@ const Post = ({ post }: Props) => {
         {/* <article> */}
         <article className="px-6">
           <h1 className="font-titleFont font-bold text-[35px] border-b-[2px] border-primaryColor mt-10 mb-3">
-            {post.title}
+            {post?.title}
           </h1>
           <h2 className="font-bodyFont text-[18px] text-gray-500 mb-2">
-            {post.description}
+            {post?.description}
           </h2>
           <div>
             <img
               className="object-cover w-12 h-12 rounded-full"
-              src={urlFor(post.author.image).url()}
+              src={post?.author?.image}
               alt="authorImg"
             />
             <p className="text-base font-bodyFont">
               Blog post by{" "}
               <span className="font-bold text-highlightColor">
-                {post.author.name}{" "}
+                {post?.author?.name}{" "}
               </span>
-              Published at {moment(post.publishedAt).format("DD/MM/YYYY")}
+              Published at {moment(post?.publishedAt).format("DD/MM/YYYY")}
             </p>
           </div>
           <div className="mt-10">
-            <PortableText
-              content={post.body}
-              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-              serializers={{
-                h1: (props: any) => (
-                  <h1
-                    className="my-5 text-3xl font-bold font-titleFont"
-                    {...props}
-                  />
-                ),
-                h2: (props: any) => (
-                  <h2
-                    className="my-5 text-2xl font-bold font-titleFont"
-                    {...props}
-                  />
-                ),
-                h3: (props: any) => (
-                  <h3
-                    className="my-5 text-xl font-bold font-titleFont"
-                    {...props}
-                  />
-                ),
-                li: ({ children }: any) => (
-                  <li className="ml-4 list-disc">{children}</li>
-                ),
-                link: ({ href, children }: any) => (
-                  <a href={href} className="text-cyan-500 hover:underline">
-                    {children}
-                  </a>
-                ),
-              }}
-            />
+            {post.body && (
+              <PortableText
+                content={post.body}
+                projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+                dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+                serializers={{
+                  h1: (props: any) => (
+                    <h1
+                      className="my-5 text-3xl font-bold font-titleFont"
+                      {...props}
+                    />
+                  ),
+                  h2: (props: any) => (
+                    <h2
+                      className="my-5 text-2xl font-bold font-titleFont"
+                      {...props}
+                    />
+                  ),
+                  h3: (props: any) => (
+                    <h3
+                      className="my-5 text-xl font-bold font-titleFont"
+                      {...props}
+                    />
+                  ),
+                  li: ({ children }: any) => (
+                    <li className="ml-4 list-disc">{children}</li>
+                  ),
+                  link: ({ href, children }: any) => (
+                    <a href={href} className="text-cyan-500 hover:underline">
+                      {children}
+                    </a>
+                  ),
+                }}
+              />
+            )}
           </div>
         </article>
         {/* <article> */}
@@ -172,7 +174,7 @@ const Post = ({ post }: Props) => {
             {...register("_id")}
             type="hidden"
             name="_id"
-            value={post._id}
+            value={post?._id}
           />
           <form onSubmit={handleSubmit(onSubmit)}>
             <label className="flex flex-col">
@@ -281,9 +283,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const query = `
   *[_type == "post"]{
     _id,
-    slug {
-      current,
-    },
+    slug,
   }`;
 
   const posts = await sanityClient.fetch(query);
@@ -309,13 +309,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     slug,
     author -> {
       name,
-      image,
+      "image": image.asset->url,
     },
     categories[] -> {
       title
     },
     description,
-    mainImage,
+    "mainImage": mainImage.asset->url,
     body,
   }`;
 
