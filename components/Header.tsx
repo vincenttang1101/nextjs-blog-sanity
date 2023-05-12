@@ -90,15 +90,13 @@ const Header = () => {
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-3">
               <img
+                className="w-11 h-11 rounded-full"
                 src={
                   session
                     ? session?.user!.image!
                     : "https://i.ibb.co/R718FDz/stranger-logo.jpg"
                 }
-                width={200}
-                height={0}
                 alt="logo"
-                className="w-11 h-11 rounded-full"
               />
               <p>{session ? session?.user!.name : "Hello Stranger"}</p>
             </div>
